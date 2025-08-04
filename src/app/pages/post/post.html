@@ -1,0 +1,29 @@
+<h2>Blog Posts</h2>
+
+<!-- Add New Post -->
+<input class="form-control" [(ngModel)]="newTitle" placeholder="New Post Title" />
+<button class="btn btn-primary mt-2" (click)="addPost()" [disabled]="!newTitle.trim()">Add</button>
+
+<hr />
+
+<!-- Loading & Error Handling -->
+<div *ngIf="loading()">Loading...</div>
+<div *ngIf="error" style="color: red">{{ error }}</div>
+
+<!-- Posts List -->
+<ul *ngIf="!loading() && !error">
+  <li *ngFor="let post of posts">
+    {{ post.id }} - {{ post.title }}
+
+    <!-- Delete Button -->
+    <button class="btn btn-danger btn-sm" (click)="deletePost(post.id)">Delete</button>
+
+    <!-- Update Input and Button -->
+    <input
+      class="form-control d-inline-block w-50 mx-2"
+      [(ngModel)]="updateText[post.id]"
+      placeholder="Enter updated title"
+    />
+    <button class="btn btn-success btn-sm" (click)="updatePost(post.id)">Update</button>
+  </li>
+</ul>
