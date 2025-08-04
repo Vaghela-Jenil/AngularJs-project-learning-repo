@@ -6,7 +6,7 @@ export class HighLight{
     }
 
     @HostListener('mouseenter') onEnter(){
-        this.el.nativeElement.style.backgroundColor = 'yellow';
+        this.el.nativeElement.style.backgroundColor = 'red';
     }
 
     @HostListener('mouseleave') onLeave(){
